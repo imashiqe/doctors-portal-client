@@ -1,6 +1,7 @@
 import React from 'react';
 import background  from '../../../assets/images/bg.png';
 import chair from '../../../assets/images/chair.png';
+import './Banner.css';
 const Banner = () => {
     return (
         <div className="hero  " style={{ backgroundImage: `url(${background})` }}>

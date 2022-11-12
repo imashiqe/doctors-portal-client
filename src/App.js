@@ -4,20 +4,12 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <div className="btn-group">
+  <input type="radio" name="options" data-title="1" className="btn" />
+  <input type="radio" name="options" data-title="2" className="btn" checked />
+  <input type="radio" name="options" data-title="3" className="btn" />
+  <input type="radio" name="options" data-title="4" className="btn" />
+</div>
     </div>
   );
 }

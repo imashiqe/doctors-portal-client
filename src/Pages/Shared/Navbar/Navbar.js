@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
      
     const menuItems = <React.Fragment>
-           <li><a>Home</a></li>  
-        <li><a>Appointment</a></li>
-        <li><a>Reviews</a></li>  
-        <li><a>Contact Us</a></li>
+            <li><Link to='/'>Home</Link></li>  
+            <li><Link to='/appointment'>Appointment</Link></li>
+            <li><Link to='/reviews'>Reviews</Link></li>  
+            <li><Link to='/contactus'>Contact Us</Link></li>
     </React.Fragment>
      
     return (
@@ -21,7 +22,7 @@ const Navbar = () => {
            {menuItems}
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl">Doctors Portal</a>
+    <Link to='/' className="btn btn-ghost normal-case text-xl">Doctors Portal</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal p-0">

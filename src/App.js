@@ -1,15 +1,11 @@
-import logo from './logo.svg';
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
+import router from './Routes/Routes';
 
 function App() {
   return (
-    <div className="App">
-       <div className="btn-group">
-  <input type="radio" name="options" data-title="1" className="btn" />
-  <input type="radio" name="options" data-title="2" className="btn" checked />
-  <input type="radio" name="options" data-title="3" className="btn" />
-  <input type="radio" name="options" data-title="4" className="btn" />
-</div>
+    <div >
+        <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }

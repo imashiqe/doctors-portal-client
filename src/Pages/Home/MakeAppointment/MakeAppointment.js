@@ -5,7 +5,7 @@ import './MakeAppointment.css';
 import PrimaryButton from '../../../components/PrimaryButton/PrimaryButton';
 const MakeAppointment = () => {
     return (
-        <section className='mt-64' 
+        <section className='mt-64  rounded-lg' 
           style={
              {
                 background: `url(${appointment})`
@@ -13,8 +13,8 @@ const MakeAppointment = () => {
           }
         >
             <div className="hero  ">
-  <div className="hero-content flex-col lg:flex-row">
-    <img src={doctor} alt=""  className="-mt-64 appimg h-100%  lg:w-1/2" />
+  <div className="hero-content flex-col lg:flex-row ">
+    <img src={doctor} alt=""  className="-mt-64 appimg  " />
     <div>
       <h4 className='text-primary font-bold'>Appointment</h4>
       <h1 className="text-4xl font-bold text-white">Make an appointment Today</h1>

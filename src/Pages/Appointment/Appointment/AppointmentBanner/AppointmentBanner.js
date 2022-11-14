@@ -3,8 +3,9 @@ import background  from '../../../../assets/images/bg.png';
 import chair from '../../../../assets/images/chair.png';
 import { DayPicker } from 'react-day-picker';
 import { format } from 'date-fns';
-const AppointmentBanner = () => {
-    const [selectedDate, setSelectedDate] = useState(new Date())
+import PrimaryButton from '../../../../components/PrimaryButton/PrimaryButton';
+const AppointmentBanner = ({selectedDate,setSelectedDate}) => {
+   
     return (
         <header className='my-6'>
                  <div className="hero  " style={{ backgroundImage: `url(${background})` }}>
@@ -17,10 +18,18 @@ const AppointmentBanner = () => {
                           onSelect={setSelectedDate}
                         />
 
-                        <p>You Have  Selected Date: {format(selectedDate, 'PP')}</p>
+
                  </div>
                  </div>
+                   
+                   
+                    
                  </div>
+
+             
+                 
+          
+                
         </header>
     );
 };

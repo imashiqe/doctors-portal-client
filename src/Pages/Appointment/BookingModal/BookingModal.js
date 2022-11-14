@@ -1,6 +1,6 @@
 import React from 'react';
 import { format } from 'date-fns';
-const BookingModal = ({treatment, selectedDate}) => {
+const BookingModal = ({treatment,setTreatment, selectedDate}) => {
     // treatment is  just another of appointment options  with name, slots, _id
     const {name, slots} = treatment; 
     const date =  format(selectedDate, 'PP')
@@ -11,8 +11,20 @@ const BookingModal = ({treatment, selectedDate}) => {
      const email = form.email.value;
      const slot = form.slot.value;
      const phone = form.phone.value;
+     const booking = {
+        appointmentDate: date,
+        treatment: name,
+        patient: name ,
+        slot,
+        email,
+        phone,
+     }
 
-     console.log(date, slot, name, email, phone)
+     //TODO: send data  to  the  server  
+     // and once  data is saved then  close the modal and display  success toast
+
+     console.log(booking)
+     setTreatment(null)
    }
 
     return (
@@ -28,7 +40,10 @@ const BookingModal = ({treatment, selectedDate}) => {
     <input type="text" disabled value={date} className="input w-full  input-bordered" />
     <select name='slot' className="select select-bordered w-full ">
      {
-        slots.map(slot =>  <option value={slot}>{slot}</option>)
+        slots.map((slot, i) =>  <option
+             value={slot}
+             key={i}
+             >{slot}</option>)
      }
     </select>
     <input name='name' type="text" placeholder="Your Name" className="input w-full  input-bordered" />

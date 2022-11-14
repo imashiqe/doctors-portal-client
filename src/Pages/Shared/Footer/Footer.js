@@ -11,7 +11,7 @@ const Footer = () => {
             }
         }>
     
-    <div className='footer'>
+    <div className='footer grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 pb-12'>
     <div >
     <span className="footer-title">Services</span> 
     <Link to='/'  className="link link-hover">Branding</Link>

@@ -1,18 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-
-const Login = () => {
+const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-     const handleLogin = data =>{
+   
+    const handleSignUp = (data) => {
          console.log(data);
-     }
+    }
+
     return (
-        <div className='lg:h-[800px] md:h-[800px]  h-[600px] flex justify-center items-center'>
+        <div className='lg:h-[800px] md:h-[800px]  h-[700px] flex justify-center items-center'>
              <div className='w-96 p-7'>
-             <h2 className='text-3xl text-center'>Login</h2>
-             <form onSubmit={handleSubmit(handleLogin)}>
+             <h2 className='text-3xl text-center'>SignUp</h2>
+             <form onSubmit={handleSubmit()}>
            
+                <div className="form-control w-full max-w-xs">
+                <label className="label">
+                <span className="label-text">Name</span>
+                
+                </label>
+                <input type="text" 
+                placeholder="Your  Name" 
+                className="input input-bordered w-full max-w-xs" 
+                 {...register("name", {required: "Name is required"})} />
+                  {errors.name && <p className='text-red-600'>{errors.name?.message}</p>}
+
+
+                </div>
                 <div className="form-control w-full max-w-xs">
                 <label className="label">
                 <span className="label-text">Email</span>
@@ -54,7 +68,7 @@ const Login = () => {
 
     <div className="flex flex-col w-full border-opacity-50">
   <div className="grid h-20 card  rounded-box place-items-center">
-  <p >New To Doctors Portal <Link className='text-secondary' to='/signup'>Create New Account</Link></p>
+  <p >Already have an account..? <Link className='text-secondary' to='/login'>Please Login</Link></p>
   </div>
   <div className="divider">OR</div>
   <div className="grid h-20 card  rounded-box place-items-center">
@@ -67,4 +81,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;

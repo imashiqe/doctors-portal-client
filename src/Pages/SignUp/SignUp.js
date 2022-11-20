@@ -40,7 +40,7 @@ const SignUp = () => {
 
 
                 </div>
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-full max-w-xs pb-5">
                 <label className="label">
                 <span className="label-text">Password</span>
                 
@@ -54,14 +54,10 @@ const SignUp = () => {
                   })} />
                    {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
               
-                <label className="label">
-                <span className="label-text">Forget Password</span>
-                
-                </label>
 
                 </div>
 
-                <input className='btn btn-accent w-full'  value="Login" type="submit" />
+                <input className='btn btn-accent w-full'  value="SignUp" type="submit" />
     
     </form>
     

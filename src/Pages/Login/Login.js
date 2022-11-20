@@ -3,12 +3,12 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit } = useForm();
      const handleLogin = data =>{
          console.log(data);
      }
     return (
-        <div className='h-[800px]  flex justify-center items-center'>
+        <div className='lg:h-[800px] md:h-[800px]  h-[600px] flex justify-center items-center'>
              <div className='w-96 p-7'>
              <h2 className='text-3xl text-center'>Login</h2>
              <form onSubmit={handleSubmit(handleLogin)}>
@@ -18,7 +18,11 @@ const Login = () => {
                 <span className="label-text">Email</span>
                 
                 </label>
-                <input type="email" placeholder="Your  Email" className="input input-bordered w-full max-w-xs"  {...register("email")} />
+                <input type="email" 
+                placeholder="Your  Email" 
+                className="input input-bordered w-full max-w-xs" 
+                 {...register("email", {required: "Email Address is required"})} />
+                  {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
 
 
                 </div>
@@ -27,7 +31,11 @@ const Login = () => {
                 <span className="label-text">Password</span>
                 
                 </label>
-                <input type="password" placeholder=" Your Password" className="input input-bordered w-full max-w-xs"  {...register("password")} />
+                <input type="password"
+                 placeholder=" Your Password" 
+                 className="input input-bordered w-full max-w-xs" 
+                  {...register("password" , {required:  "Password is Required"})} />
+                   {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
               
                 <label className="label">
                 <span className="label-text">Forget Password</span>

@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { format } from 'date-fns';
+import { AuthContext } from '../../../context/AuthProvider';
+import toast from 'react-hot-toast';
 const BookingModal = ({treatment,setTreatment, selectedDate}) => {
     // treatment is  just another of appointment options  with name, slots, _id
     const {name, slots} = treatment; 
     const date =  format(selectedDate, 'PP')
+
+   const {user} = useContext(AuthContext);
+       
    const handleBooking = event => {
      event.preventDefault();
      const form = event.target;
@@ -22,9 +27,29 @@ const BookingModal = ({treatment,setTreatment, selectedDate}) => {
 
      //TODO: send data  to  the  server  
      // and once  data is saved then  close the modal and display  success toast
+    
 
-     console.log(booking)
-     setTreatment(null)
+     fetch('http://localhost:5000/bookings', {
+        method: 'POST',
+        headers: {
+          'content-type' : 'application/json'
+        },
+        body: JSON.stringify(booking)
+     })
+     .then(res => res.json())
+     .then(data => {
+       console.log(data);
+
+      if(data.acknowledged){
+          
+       setTreatment(null);
+       toast.success('Booking Confirmed')
+      }
+
+
+     })
+
+   
    }
 
     return (
@@ -46,8 +71,8 @@ const BookingModal = ({treatment,setTreatment, selectedDate}) => {
              >{slot}</option>)
      }
     </select>
-    <input name='name' type="text" placeholder="Your Name" className="input w-full  input-bordered" />
-    <input name='email'  type="email" placeholder="Email Address" className="input w-full  input-bordered" />
+    <input name='name' type="text" placeholder="Your Name" defaultValue={user?.displayName} disabled className="input w-full  input-bordered" />
+    <input name='email' defaultValue={user?.email} disabled type="email" placeholder="Email Address" className="input w-full  input-bordered" />
     <input name='phone' type="text" placeholder="Phone Number" className="input w-full  input-bordered" />
     <input type="submit" value="submit"  className="input w-full  btn btn-accent" />
     </form>

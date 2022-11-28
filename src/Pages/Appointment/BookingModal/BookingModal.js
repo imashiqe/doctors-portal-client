@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import { format } from 'date-fns';
 import { AuthContext } from '../../../context/AuthProvider';
 import toast from 'react-hot-toast';
-const BookingModal = ({treatment,setTreatment, selectedDate}) => {
+const BookingModal = ({treatment,setTreatment, selectedDate,refetch}) => {
     // treatment is  just another of appointment options  with name, slots, _id
-    const {name, slots} = treatment; 
+    const {name:treatmentName, slots} = treatment; 
+    
     const date =  format(selectedDate, 'PP')
 
    const {user} = useContext(AuthContext);
@@ -18,7 +19,7 @@ const BookingModal = ({treatment,setTreatment, selectedDate}) => {
      const phone = form.phone.value;
      const booking = {
         appointmentDate: date,
-        treatment: name,
+        treatment: treatmentName,
         patient: name ,
         slot,
         email,
@@ -44,6 +45,7 @@ const BookingModal = ({treatment,setTreatment, selectedDate}) => {
           
        setTreatment(null);
        toast.success('Booking Confirmed')
+       refetch();
       }
 
 
@@ -60,7 +62,7 @@ const BookingModal = ({treatment,setTreatment, selectedDate}) => {
   <div className="modal-action">
       <label htmlFor="booking-modal" className="btn">X</label>
     </div>
-    <h3 className="font-bold text-lg">{name}</h3>
+    <h3 className="font-bold text-lg">{treatmentName}</h3>
     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
     <input type="text" disabled value={date} className="input w-full  input-bordered" />
     <select name='slot' className="select select-bordered w-full ">

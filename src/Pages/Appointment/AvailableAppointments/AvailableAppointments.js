@@ -4,11 +4,12 @@ import AppointmentOptions from './AppointmentOptions';
 import BookingModal from '../BookingModal/BookingModal';
 import { useQuery } from '@tanstack/react-query';
 import { async } from '@firebase/util';
+import Loading from '../../Shared/Loading/Loading';
 const AvailableAppointments = ({selectedDate}) => {
     // const [appointmentOptions, setAppointmentOptions] = useState([]);
     const [treatment, setTreatment] = useState(null);
   const date = format(selectedDate, 'PP')
-    const {data:appointmentOptions = [], refetch} = useQuery({
+    const {data:appointmentOptions = [], refetch, isLoading} = useQuery({
          queryKey: ['appointmentOptions', date],
 
          queryFn: async () =>   {
@@ -17,7 +18,11 @@ const AvailableAppointments = ({selectedDate}) => {
           return data
          }
         
-    })
+    });
+
+    if(isLoading){
+        return <Loading></Loading>
+    }
 
 
     // useEffect( ()=>{

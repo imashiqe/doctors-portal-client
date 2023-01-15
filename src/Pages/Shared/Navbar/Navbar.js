@@ -28,7 +28,7 @@ const Navbar = () => {
     </React.Fragment>
      
     return (
-        <div>
+        <div className='sticky top-0 z-30 w-full px-2 py-4 bg-white sm:px-4 shadow-xl'>
            <div className="navbar bg-base-100 flex justify-between">
   <div className="navbar-start">
     <div className="dropdown">
